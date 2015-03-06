@@ -134,4 +134,4 @@ RUN \
   echo 'cp `ls -t | head -n 7` /build'                                                                                 >> $BUILD && \
   chmod +x $BUILD
 
-ENTRYPOINT ["./build.sh"]
+# ENTRYPOINT ["./build.sh"]
