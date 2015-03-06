@@ -37,7 +37,8 @@ RUN \
   git clone https://github.com/tpoechtrager/osxcross.git && \
   sed -i.bak s/read/#read/g /osxcross/build.sh && \
   \
-  $FETCH $OSX_SDK_PATH 5951292b462572607d82f3d7611101e71bb0a54c \
+  $FETCH $OSX_SDK_PATH 5951292b462572607d82f3d7611101e71bb0a54c && \
+  mv `basename $OSX_SDK_PATH` /osxcross/tarballs/ && \
   \
   /osxcross/build.sh
 
