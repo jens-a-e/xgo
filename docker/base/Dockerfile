@@ -40,7 +40,7 @@ RUN \
   $FETCH $OSX_SDK_PATH 5951292b462572607d82f3d7611101e71bb0a54c && \
   mv `basename $OSX_SDK_PATH` /osxcross/tarballs/ && \
   \
-  /osxcross/build.sh
+  OSX_VERSION_MIN=10.6 /osxcross/build.sh
 
 
 # Create a small script to download all the Go packages, install the core Linux
@@ -134,4 +134,4 @@ RUN \
   echo 'cp `ls -t | head -n 7` /build'                                                                                 >> $BUILD && \
   chmod +x $BUILD
 
-# ENTRYPOINT ["./build.sh"]
+ENTRYPOINT ["./build.sh"]
