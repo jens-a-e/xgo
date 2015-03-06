@@ -30,17 +30,14 @@ RUN \
     patch make xz-utils cpio wget unzip git mercurial --no-install-recommends
 
 # Configure the container for OSX cross compilation
-ENV OSX_SDK_PATH https://github.com/trevd/android_platform_build2/raw/master/osxsdks10.6.tar.gz
-ENV OSX_SDK      MacOSX10.6.sdk
+ENV OSX_SDK_PATH http://lea.io/files/osxcross/MacOSX10.10.sdk.tar.xz
+ENV OSX_SDK      MacOSX10.10.sdk
 
 RUN \
   git clone https://github.com/tpoechtrager/osxcross.git && \
   sed -i.bak s/read/#read/g /osxcross/build.sh && \
   \
-  $FETCH $OSX_SDK_PATH f526b4ae9806e8d31e3b094e3f004f8f160a3fad && \
-  tar -xzf `basename $OSX_SDK_PATH` --strip-components 1 SDKs/$OSX_SDK && \
-  tar -cjf /osxcross/tarballs/$OSX_SDK.tar.bz2 $OSX_SDK && \
-  rm -rf `basename $OSX_SDK_PATH` $OSX_SDK && \
+  $FETCH $OSX_SDK_PATH 5951292b462572607d82f3d7611101e71bb0a54c
   \
   /osxcross/build.sh
 
